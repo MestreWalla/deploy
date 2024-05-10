@@ -22,4 +22,4 @@ EXPOSE 8080
 COPY --from=build /target/render-0.0.1-SNAPSHOT.jar app.jar
 
 # Defina o comando de inicializaçao da aplicaçao
-ENTRYPOINT ["java", "-jar", "app"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
