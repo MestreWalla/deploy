@@ -26,5 +26,8 @@ public class LivrosController {
     public Livro create(@RequestBody Livro livro) {
         return this.livrosRepository.save(livro);
     }
-
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 }
