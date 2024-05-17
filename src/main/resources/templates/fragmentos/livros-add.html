@@ -16,22 +16,22 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Cadastro de Novo Livros</h5>
+                    <h5 class="modal-title">Cadastro de Novo Livro</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="form-add-livro" action="/novoLivro" method="post" enctype="multipart/form-data">
+                    <form id="form-add-livro" onsubmit="event.preventDefault(); cadastrarLivro();">
                         <!-- <div class="mb-3">
                             <input name="imagem" class="form-control form-control-sm" id="formFileSm" type="file">
                         </div> -->
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="titulo">Título:</span>
-                            <input name="titulo" type="text" class="form-control" placeholder="Título do Livro"
-                                aria-label="Titulo do Livro" aria-describedby="titulo">
+                            <input name="titulo" id="titulo" type="text" class="form-control" placeholder="Título do Livro"
+                                aria-label="Titulo do Livro" aria-describedby="titulo" required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="autor">Autor:</span>
-                            <input name="autor" type="text" class="form-control" placeholder="Autor do Livro"
-                                aria-label="Autor do Livro" aria-describedby="autor">
+                            <input name="autor" id="autor" type="text" class="form-control" placeholder="Autor do Livro"
+                                aria-label="Autor do Livro" aria-describedby="autor" required>
                         </div>
                         
                         <div class="modal-footer">
@@ -40,10 +40,31 @@
                         </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>
+
+    <script>
+        async function cadastrarLivro() {
+            const titulo = document.getElementById('titulo').value;
+            const autor = document.getElementById('autor').value;
+
+            const response = await fetch('/novoLivro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ titulo, autor })
+            });
+
+            if (response.ok) {
+                alert('Livro cadastrado com sucesso!');
+                // Opcionalmente, você pode fechar o modal ou limpar o formulário aqui.
+            } else {
+                alert('Erro ao cadastrar livro.');
+            }
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
