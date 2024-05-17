@@ -50,9 +50,8 @@
         <div class="card-body">
             <h5 class="card-title">Conhece outro livro?</h5>
             <p class="card-text">Compartilhe as informações com todos e ajude a espalhar conhecimento.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastro-modal">Cadastrar novo
-                Livro</button>
-            <th:block th:replace="~{livros-add :: modal('cadastro-modal')}">modal</th:block>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cadastro-modal">Cadastrar novo Livro</button>
+            <th:block th:replace="~{fragmentos/livros-add :: modal('cadastro-modal')}">modal</th:block>
         </div>
         <div class="card-footer text-body-secondary">Obrigado por ajudar a espalhar conhecimento</div>
     </div>
